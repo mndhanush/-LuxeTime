@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" dir="ltr" class="scroll-smooth w-full overflow-x-hidden dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="LuxeTime Gifting - Discover timeless presents, curated gift sets, and bespoke corporate gifting solutions.">
+    <title>Gifting | LuxeTime</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        primary: '#050505',   
+                        secondary: '#D4AF37', 
+                        cream: '#F9F6F0',     
+                        accent: '#111111',    
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.8s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'fadeInUp': 'fadeInUp 0.6s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        slideUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(30px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+        
+        :root {
+            --bg-color: #FFFFFF; 
+            --bg-alt: #F9F6F0; 
+            --card-bg: #FFFFFF;    
+            --text-main: #333333; 
+            --text-heading: #000000; 
+            --navbar-bg: #FFFFFF; 
+            --border-color: #E5E5E5; 
+        }
+        
+        [data-theme="dark"] {
+            --bg-color: #050505; 
+            --bg-alt: #0A0A0A; 
+            --card-bg: #111111; 
+            --text-main: #CCCCCC; 
+            --text-heading: #FFFFFF; 
+            --navbar-bg: #000000;
+            --border-color: #333333;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html, body { 
+            overflow-x: hidden !important; 
+            width: 100%; 
+            max-width: 100vw;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+        
+        h1, h2, h3, h4, h5, h6 { 
+            font-family: 'Playfair Display', serif;
+            color: var(--text-heading); 
+        }
+        p { color: var(--text-main); }
+        
+        .bg-theme-main { background-color: var(--bg-color); }
+        .bg-theme-alt { background-color: var(--bg-alt); }
+        .bg-card-theme { background-color: var(--card-bg); }
+        
+        .text-heading-theme { color: var(--text-heading); }
+        .text-body-theme { color: var(--text-main); }
+        .border-theme { border-color: var(--border-color); }
+        
+        /* Navbar Styles */
+        .navbar-container {
+            background-color: var(--navbar-bg);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.3s ease;
+        }
+        
+        .nav-link {
+            color: var(--text-heading); 
+            padding: 8px 8px;
+            transition: all 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-weight: 500;
+            white-space: nowrap;
+            cursor: pointer;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .nav-link:hover { color: #D4AF37; }
+        .nav-link.active { color: #D4AF37; font-weight: 700; }
+        
+        /* Dropdowns */
+        .dropdown { position: relative; }
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: var(--navbar-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            min-width: 180px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .dropdown:hover .dropdown-menu, .dropdown.active .dropdown-menu {
+            opacity: 1; visibility: visible; transform: translateY(0);
+        }
+        .dropdown-item {
+            display: block; padding: 12px 20px; color: var(--text-heading);
+            transition: all 0.3s ease; border-bottom: 1px solid var(--border-color); font-size: 0.85rem; text-transform: uppercase;
+        }
+        .dropdown-item:hover { background-color: rgba(212, 175, 55, 0.1); color: #D4AF37; padding-left: 25px; }
+        .dropdown-arrow { font-size: 0.7rem; transition: transform 0.3s ease; }
+        .dropdown:hover .dropdown-arrow { transform: rotate(180deg); }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(-100%); transition: transform 0.3s ease;
+            background-color: var(--navbar-bg); color: var(--text-heading); 
+        }
+        .mobile-menu.active { transform: translateX(0); }
+        
+        .mobile-dropdown-content {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+            padding-left: 20px; border-radius: 4px;
+        }
+        .mobile-dropdown-content a { color: var(--text-main); } 
+        .mobile-dropdown-content a:hover { color: #D4AF37; }
+        .mobile-dropdown-content.active { max-height: 500px; margin: 5px 0; }
+
+        /* Generic Cards */
+        .hover-card { transition: all 0.4s ease; border: 1px solid var(--border-color); }
+        .hover-card:hover {
+            transform: translateY(-8px);
+            border-color: #D4AF37 !important;
+            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.15);
+        }
+        
+        .gold-gradient-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #mobile-menu-btn:active { transform: scale(0.9); }
+        
+        @media (max-width: 1279px) {
+            .desktop-nav, .navbar-right-desktop { display: none !important; }
+            .mobile-menu-button { display: flex !important; }
+        }
+        @media (min-width: 1280px) {
+            .desktop-nav, .navbar-right-desktop { display: flex !important; }
+            .mobile-menu-button { display: none !important; }
+        }
+    </style>
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body class="w-full overflow-x-hidden m-0 p-0 antialiased dark">
+
+    <div class="relative w-full max-w-full overflow-x-hidden flex flex-col min-h-screen">
+        
+        <!-- Navbar -->
+        <nav id="navbar" class="navbar-container py-4 fixed top-0 inset-x-0 z-[1000]">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="flex items-center justify-between">
+                    
+                    <a href="index.html" class="flex items-center gap-2 no-underline transition-transform duration-300 hover:scale-105 group">
+                        <i class="fas fa-gem text-secondary text-2xl"></i>
+                        <div class="text-2xl font-serif font-bold text-heading-theme tracking-wider uppercase">Luxe<span class="text-secondary">Time</span></div>
+                    </a>
+                    
+                    <div class="desktop-nav items-center space-x-2 xl:space-x-4">
+                        <div class="dropdown" id="home-dropdown">
+                            <div class="nav-link" onclick="toggleDesktopDropdown('home-dropdown')">
+                                Home <i class="fas fa-chevron-down dropdown-arrow"></i>
+                            </div>
+                            <div class="dropdown-menu">
+                                <a href="index.html" class="dropdown-item">Home 1</a>
+                                <a href="home2.html" class="dropdown-item">Home 2</a>
+                            </div>
+                        </div>
+                        <a href="about.html" class="nav-link">About</a>
+                        <a href="Watches.html" class="nav-link">Watches</a>
+                        <a href="Jewellery.html" class="nav-link">Jewellery</a>
+                        <a href="Product.html" class="nav-link">Product</a>
+                        <a href="Gifting.html" class="nav-link active">Gifting</a>
+                        <a href="New Arrivals.html" class="nav-link">New Arrivals</a>
+                        <a href="Pricing.html" class="nav-link">Pricing</a>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </div>
+                    
+                    <div class="navbar-right-desktop flex items-center gap-3 shrink-0">
+                        <button class="w-9 h-9 rounded-full flex items-center justify-center text-heading-theme transition-all duration-300 hover:bg-secondary hover:text-white shrink-0 border border-theme cursor-pointer" id="desktop-theme-toggle-btn" title="Toggle Dark Mode">
+                            <i class="fas fa-moon" id="desktop-theme-icon"></i>
+                        </button>
+                        <button class="w-9 h-9 rounded-full flex items-center justify-center text-heading-theme transition-all duration-300 hover:bg-secondary hover:text-white shrink-0 border border-theme cursor-pointer" id="desktop-rtl-toggle-btn" title="Toggle RTL">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        <div class="h-6 w-px bg-theme border-theme mx-2"></div>
+                        <a href="login.html" class="text-heading-theme hover:text-secondary font-bold text-sm uppercase tracking-wide transition-all px-2 py-2 flex items-center shrink-0">
+                            Login
+                        </a>
+                        <a href="register.html" class="bg-secondary text-white px-6 py-2.5 rounded-sm font-bold text-sm uppercase tracking-wider transition-all hover:bg-black hover:text-secondary border border-secondary shadow-lg hover:shadow-xl flex items-center gap-2 shrink-0">
+                            Register
+                        </a>
+                    </div>
+                    
+                    <button id="mobile-menu-btn" class="hidden text-heading-theme text-2xl cursor-pointer bg-transparent border-0 mobile-menu-button hover:text-secondary transition-colors items-center justify-center h-10 w-10">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu fixed inset-0 z-[9999] overflow-y-auto">
+            <div class="p-6">
+                <div class="flex flex-wrap justify-between items-center mb-8 gap-3">
+                    <a href="index.html" class="flex items-center gap-2 group">
+                        <i class="fas fa-gem text-secondary text-2xl"></i>
+                        <div class="text-2xl font-serif font-bold text-heading-theme tracking-wider uppercase">Luxe<span class="text-secondary">Time</span></div>
+                    </a>
+                    
+                    <div class="flex items-center gap-3">
+                        <button id="mobile-theme-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-heading-theme transition-all hover:bg-secondary hover:text-white border border-theme cursor-pointer">
+                            <i class="fas fa-moon" id="mobile-theme-icon"></i>
+                        </button>
+                        <button id="mobile-rtl-toggle" class="w-9 h-9 rounded-full flex items-center justify-center text-heading-theme transition-all hover:bg-secondary hover:text-white border border-theme cursor-pointer">
+                            <i class="fas fa-exchange-alt"></i>
+                        </button>
+                        <button id="close-mobile-menu" class="text-heading-theme text-3xl ml-2 transition-transform active:scale-90 border-0 bg-transparent cursor-pointer">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="space-y-1">
+                    <div>
+                        <button id="mobile-home-btn" class="flex items-center justify-between w-full text-heading-theme font-medium text-sm uppercase tracking-wide py-4 no-underline cursor-pointer border-b border-theme bg-transparent" onclick="toggleMobileDropdown('home-mobile')">
+                            <span>Home</span>
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </button>
+                        <div id="home-mobile" class="mobile-dropdown-content">
+                            <a href="index.html" class="block py-3 text-sm font-medium">Home 1</a>
+                            <a href="home2.html" class="block py-3 text-sm font-medium">Home 2</a>
+                        </div>
+                    </div>
+                    <a href="about.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>About</span></a>
+                    <a href="Watches.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>Watches</span></a>
+                    <a href="Jewellery.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>Jewellery</span></a>
+                    <a href="Product.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>Product</span></a>
+                    <a href="Gifting.html" class="flex items-center justify-between w-full text-secondary text-sm uppercase tracking-wide font-bold py-4 no-underline border-b border-theme"><span>Gifting</span></a>
+                    <a href="New Arrivals.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>New Arrivals</span></a>
+                    <a href="Pricing.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>Pricing</span></a>
+                    <a href="contact.html" class="flex items-center justify-between w-full text-heading-theme text-sm uppercase tracking-wide font-medium py-4 no-underline border-b border-theme"><span>Contact</span></a>
+                    
+                    <div class="mt-8 pt-4 flex flex-col gap-4">
+                        <a href="login.html" class="border border-secondary text-secondary w-full py-3.5 rounded-sm font-bold text-sm uppercase tracking-wider text-center hover:bg-secondary hover:text-white transition-all">
+                            Login
+                        </a>
+                        <a href="register.html" class="bg-secondary text-white w-full py-3.5 rounded-sm font-bold text-sm uppercase tracking-wider text-center shadow-lg hover:bg-black hover:text-secondary border border-secondary transition-all">
+                            Register
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <main class="w-full flex-grow pt-[72px] lg:pt-[80px]">
+            
+            <!-- 1️⃣ Hero Section: The Art of Gifting -->
+            <section class="h-[100vh] md:h-[100vh] relative flex items-center justify-center overflow-hidden border-b border-theme">
+                <div class="absolute inset-0 w-full h-full z-0">
+                    <img src="assets/images/premium/gifting_hero.png" alt="Luxury Gift Box" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/60 z-10"></div>
+                </div>
+                
+                <div class="container mx-auto px-4 relative z-20 flex flex-col items-center text-center mt-10">
+                    <div class="animate-fadeInUp w-full max-w-4xl flex flex-col items-center text-center opacity-0" style="animation-fill-mode: forwards;">
+                        <span class="text-secondary font-bold tracking-[0.3em] uppercase mb-6 block text-xs sm:text-sm w-full">Unforgettable Moments</span>
+                        <h1 class="text-4xl sm:text-5xl md:text-7xl font-serif mb-8 leading-tight text-white drop-shadow-2xl">
+                            The Art of <span class="gold-gradient-text italic">Gifting</span>
+                        </h1>
+                        <p class="text-lg sm:text-xl text-gray-300 font-light max-w-2xl mx-auto mb-10 drop-shadow-md">
+                            Celebrate life's most precious milestones with timeless presents. Explore our curated collections of extraordinary timepieces and breathtaking jewellery.
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-6 w-full sm:w-auto justify-center">
+                            <a href="#occasions" class="w-full sm:w-auto text-center bg-secondary text-black px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 hover:bg-white text-sm shadow-xl hover:shadow-2xl">
+                                Shop by Occasion
+                            </a>
+                            <a href="#recipients" class="w-full sm:w-auto text-center bg-transparent backdrop-blur-sm text-white px-10 py-4 font-bold uppercase tracking-widest transition-all duration-300 border border-white hover:border-secondary hover:text-secondary text-sm">
+                                Shop by Recipient
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- 2️⃣ Curated Occasions -->
+            <section id="occasions" class="py-24 bg-theme-main">
+                <div class="container mx-auto px-4 lg:px-8">
+                    <div class="flex flex-col items-center text-center w-full mb-16">
+                        <span class="text-secondary font-bold tracking-[0.2em] uppercase mb-3 block text-xs">A Gift for Every Milestone</span>
+                        <h2 class="text-3xl md:text-5xl font-serif text-heading-theme">Curated Occasions</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <!-- Anniversary -->
+                        <div class="relative group overflow-hidden cursor-pointer h-[400px]">
+                            <img src="assets/images/img-14.jpg" alt="Anniversary" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-center">
+                                <h3 class="text-2xl font-serif text-white mb-2">Anniversaries</h3>
+                                <div class="h-px w-0 bg-secondary mx-auto group-hover:w-full transition-all duration-500 mb-4"></div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300">Explore Collection</span>
+                            </div>
+                        </div>
+
+                        <!-- Wedding -->
+                        <div class="relative group overflow-hidden cursor-pointer h-[400px]">
+                            <img src="assets/images/premium/service_hero.png" alt="Wedding" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-center">
+                                <h3 class="text-2xl font-serif text-white mb-2">Weddings</h3>
+                                <div class="h-px w-0 bg-secondary mx-auto group-hover:w-full transition-all duration-500 mb-4"></div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300">Explore Collection</span>
+                            </div>
+                        </div>
+
+                        <!-- Birthday -->
+                        <div class="relative group overflow-hidden cursor-pointer h-[400px]">
+                            <img src="assets/images/img-23.jpg" alt="Birthday" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-center">
+                                <h3 class="text-2xl font-serif text-white mb-2">Birthdays</h3>
+                                <div class="h-px w-0 bg-secondary mx-auto group-hover:w-full transition-all duration-500 mb-4"></div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300">Explore Collection</span>
+                            </div>
+                        </div>
+                        
+                        <!-- Milestones -->
+                        <div class="relative group overflow-hidden cursor-pointer h-[400px]">
+                            <img src="assets/images/img-63.jpg" alt="Milestone" class="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                            <div class="absolute bottom-6 left-6 right-6 text-center">
+                                <h3 class="text-2xl font-serif text-white mb-2">Major Milestones</h3>
+                                <div class="h-px w-0 bg-secondary mx-auto group-hover:w-full transition-all duration-500 mb-4"></div>
+                                <span class="text-[10px] uppercase tracking-widest font-bold text-secondary opacity-0 group-hover:opacity-100 transition-opacity duration-300">Explore Collection</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 3️⃣ Gifts by Recipient -->
+            <section id="recipients" class="flex flex-col lg:flex-row min-h-[100vh]">
+                <!-- For Him -->
+                <div class="w-full lg:w-1/2 relative group cursor-pointer overflow-hidden h-[50vh] lg:h-auto">
+                    <img src="assets/images/img-4.jpg" alt="Gifts for Him" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+                        <span class="text-secondary font-bold tracking-[0.3em] uppercase mb-4 text-xs">Exquisite Craftsmanship</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Gifts For Him</h2>
+                        <a href="#" class="bg-transparent text-white px-8 py-3 border border-white font-bold uppercase tracking-widest text-xs group-hover:border-secondary group-hover:text-secondary transition-colors">
+                            Discover
+                        </a>
+                    </div>
+                </div>
+                <!-- For Her -->
+                <div class="w-full lg:w-1/2 relative group cursor-pointer overflow-hidden h-[50vh] lg:h-auto">
+                    <img src="assets/images/img-59.jpg" alt="Gifts for Her" class="absolute inset-0 w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-black/50 group-hover:bg-black/40 transition-colors"></div>
+                    <div class="absolute inset-0 flex flex-col items-center justify-center p-8 text-center z-10">
+                        <span class="text-secondary font-bold tracking-[0.3em] uppercase mb-4 text-xs">Unparalleled Brilliance</span>
+                        <h2 class="text-4xl md:text-5xl font-serif text-white mb-8">Gifts For Her</h2>
+                        <a href="#" class="bg-transparent text-white px-8 py-3 border border-white font-bold uppercase tracking-widest text-xs group-hover:border-secondary group-hover:text-secondary transition-colors">
+                            Discover
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4️⃣ The Art of Personalization -->
+            <section class="py-24 bg-theme-alt border-y border-theme">
+                <div class="container mx-auto px-4 lg:px-8">
+                    <div class="flex flex-col lg:flex-row items-center gap-16">
+                        <div class="w-full lg:w-1/2">
+                            <span class="text-secondary font-bold tracking-[0.2em] uppercase mb-3 block text-xs">Bespoke Touches</span>
+                            <h2 class="text-3xl md:text-5xl font-serif text-heading-theme mb-6">The Art of Personalization</h2>
+                            <p class="text-body-theme mb-10 leading-relaxed text-lg">
+                                Elevate your gift from the exceptional to the unforgettable. Our bespoke gifting services ensure that your present carries a unique and enduring significance.
+                            </p>
+                            
+                            <div class="space-y-8">
+                                <div class="flex items-start gap-6 group cursor-pointer">
+                                    <div class="w-14 h-14 rounded-full border border-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors">
+                                        <i class="fas fa-pen-nib text-secondary group-hover:text-black transition-colors"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-serif text-xl text-heading-theme mb-2">Complimentary Engraving</h4>
+                                        <p class="text-sm text-body-theme">Add a date, initials, or a personal message to the caseback of a timepiece or the inside of a ring.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-6 group cursor-pointer">
+                                    <div class="w-14 h-14 rounded-full border border-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors">
+                                        <i class="fas fa-box-open text-secondary group-hover:text-black transition-colors"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-serif text-xl text-heading-theme mb-2">Signature Packaging</h4>
+                                        <p class="text-sm text-body-theme">Every item is presented in our signature lacquered wood boxes, wrapped in silk ribbon.</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="flex items-start gap-6 group cursor-pointer">
+                                    <div class="w-14 h-14 rounded-full border border-secondary flex items-center justify-center shrink-0 group-hover:bg-secondary transition-colors">
+                                        <i class="fas fa-concierge-bell text-secondary group-hover:text-black transition-colors"></i>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-serif text-xl text-heading-theme mb-2">Gift Concierge</h4>
+                                        <p class="text-sm text-body-theme">Unsure what to choose? Our expert concierge team will help you select the perfect piece based on their style.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="w-full lg:w-1/2 relative">
+                            <img src="assets/images/img-9.jpg" alt="Luxury Wrapping" class="w-full h-[500px] object-cover shadow-2xl border border-theme">
+                            <div class="absolute -bottom-6 -left-6 bg-card-theme p-6 border border-theme shadow-xl max-w-xs hidden md:block">
+                                <p class="font-serif text-heading-theme italic">"A gift from LuxeTime is not just received; it is unveiled."</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5️⃣ Exclusive Gift Sets -->
+            <section class="py-24 bg-theme-main">
+                <div class="container mx-auto px-4 lg:px-8">
+                    <div class="flex flex-col items-center text-center w-full mb-16">
+                        <span class="text-secondary font-bold tracking-[0.2em] uppercase mb-3 block text-xs">The Vault Curations</span>
+                        <h2 class="text-3xl md:text-5xl font-serif text-heading-theme">Exclusive Gift Sets</h2>
+                        <p class="text-body-theme mt-4 max-w-2xl mx-auto">Harmonious pairings of our most sought-after items, curated for the ultimate unboxing experience.</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <!-- Gift Set 1 -->
+                        <div class="bg-card-theme p-6 border border-theme hover-card text-center group">
+                            <div class="h-64 bg-accent mb-6 relative flex items-center justify-center overflow-hidden">
+                                <img src="assets/images/img-7.jpg" alt="The Executive Set" class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80">
+                            </div>
+                            <h3 class="text-2xl font-serif text-heading-theme mb-2">The Executive Suite</h3>
+                            <p class="text-sm text-body-theme mb-4">A pairing of the Apex Chronograph and solid 18k rose gold monogrammed cufflinks.</p>
+                            <p class="text-secondary font-bold tracking-widest uppercase text-sm mb-6">$34,500</p>
+                            <button class="bg-transparent border border-secondary text-heading-theme w-full py-3 text-xs font-bold uppercase tracking-wider hover:bg-secondary hover:text-black transition-colors">
+                                View Details
+                            </button>
+                        </div>
+
+                        <!-- Gift Set 2 -->
+                        <div class="bg-card-theme p-6 border border-theme hover-card text-center group">
+                            <div class="h-64 bg-accent mb-6 relative flex items-center justify-center overflow-hidden">
+                                <img src="assets/images/premium/watch_hero_2.png" alt="The Evening Set" class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80">
+                            </div>
+                            <h3 class="text-2xl font-serif text-heading-theme mb-2">The Gala Parure</h3>
+                            <p class="text-sm text-body-theme mb-4">A stunning diamond tennis necklace matched perfectly with brilliant-cut drop earrings.</p>
+                            <p class="text-secondary font-bold tracking-widest uppercase text-sm mb-6">$28,000</p>
+                            <button class="bg-transparent border border-secondary text-heading-theme w-full py-3 text-xs font-bold uppercase tracking-wider hover:bg-secondary hover:text-black transition-colors">
+                                View Details
+                            </button>
+                        </div>
+
+                        <!-- Gift Set 3 -->
+                        <div class="bg-card-theme p-6 border border-theme hover-card text-center group">
+                            <div class="h-64 bg-accent mb-6 relative flex items-center justify-center overflow-hidden">
+                                <img src="assets/images/img-45.jpg" alt="The Collector Set" class="h-full w-full object-cover transform group-hover:scale-105 transition-transform duration-700 opacity-80">
+                            </div>
+                            <h3 class="text-2xl font-serif text-heading-theme mb-2">The Collector's Box</h3>
+                            <p class="text-sm text-body-theme mb-4">Two heritage dress watches presented in a handcrafted mahogany dual-winder case.</p>
+                            <p class="text-secondary font-bold tracking-widest uppercase text-sm mb-6">$42,000</p>
+                            <button class="bg-transparent border border-secondary text-heading-theme w-full py-3 text-xs font-bold uppercase tracking-wider hover:bg-secondary hover:text-black transition-colors">
+                                View Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6️⃣ Corporate & VIP Gifting -->
+            <section class="py-32 bg-black relative flex items-center justify-center overflow-hidden border-t border-secondary/30">
+                <div class="absolute inset-0 z-0">
+                    <img src="assets/images/premium/watch_product_1.png" alt="Corporate Gifting" class="w-full h-full object-cover opacity-30">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent"></div>
+                </div>
+                
+                <div class="container mx-auto px-4 relative z-10 text-center">
+                    <i class="fas fa-handshake text-secondary text-4xl mb-6"></i>
+                    <h2 class="text-4xl md:text-6xl font-serif text-white mb-6">Corporate & VIP Gifting</h2>
+                    <p class="text-gray-300 max-w-2xl mx-auto mb-10 text-lg font-light leading-relaxed">
+                        Reward exceptional achievements, honor loyal clients, and celebrate profound partnerships. Our Corporate Gifting team provides a seamless, end-to-end service for bulk orders and high-tier VIP requests.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row justify-center gap-6">
+                        <a href="contact.html" class="bg-secondary text-black px-10 py-4 font-bold uppercase tracking-widest text-xs hover:bg-white transition-colors shadow-lg">
+                            Contact Corporate Team
+                        </a>
+                        <a href="#" class="bg-transparent text-white border border-white px-10 py-4 font-bold uppercase tracking-widest text-xs hover:border-secondary hover:text-secondary transition-colors">
+                            Download Brochure
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="bg-primary pt-16 pb-8 border-t border-theme shrink-0">
+            <div class="container mx-auto px-4 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                    <div>
+                        <a href="index.html" class="flex items-center gap-2 mb-6">
+                            <i class="fas fa-gem text-secondary text-3xl"></i>
+                            <div class="text-2xl font-serif font-bold text-white tracking-wider uppercase">Luxe<span class="text-secondary">Time</span></div>
+                        </a>
+                        <p class="text-gray-400 mb-6 text-sm leading-relaxed font-light">
+                            Timeless Luxury, Crafted for Every Moment. Purveyors of fine watches and exquisite jewelry since 1995.
+                        </p>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 border border-secondary/50 text-secondary flex items-center justify-center hover:bg-secondary hover:text-black transition-all"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="w-10 h-10 border border-secondary/50 text-secondary flex items-center justify-center hover:bg-secondary hover:text-black transition-all"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="w-10 h-10 border border-secondary/50 text-secondary flex items-center justify-center hover:bg-secondary hover:text-black transition-all"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-serif text-white mb-6 uppercase tracking-wider">Quick Links</h3>
+                        <ul class="space-y-3 text-sm font-light">
+                            <li><a href="about.html" class="text-gray-400 hover:text-secondary transition-colors">About Us</a></li>
+                            <li><a href="Watches.html" class="text-gray-400 hover:text-secondary transition-colors">Watches</a></li>
+                            <li><a href="Jewellery.html" class="text-gray-400 hover:text-secondary transition-colors">Jewellery</a></li>
+                            <li><a href="Gifting.html" class="text-secondary transition-colors font-bold">Gifting</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-serif text-white mb-6 uppercase tracking-wider">Customer Care</h3>
+                        <ul class="space-y-3 text-sm font-light">
+                            <li><a href="contact.html" class="text-gray-400 hover:text-secondary transition-colors">Contact Us</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-secondary transition-colors">Shipping & Returns</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-secondary transition-colors">Gift Cards</a></li>
+                            <li><a href="#" class="text-gray-400 hover:text-secondary transition-colors">FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-lg font-serif text-white mb-6 uppercase tracking-wider">Newsletter</h3>
+                        <p class="text-gray-400 mb-4 text-sm font-light">Subscribe to receive exclusive invitations and updates.</p>
+                        <form class="space-y-3 flex flex-col">
+                            <input type="email" placeholder="Email Address" class="w-full px-4 py-3 bg-transparent border border-secondary/50 text-white focus:outline-none focus:border-secondary text-sm font-light" required>
+                            <button type="submit" class="w-full bg-secondary text-black px-4 py-3 font-bold uppercase tracking-widest hover:bg-white transition-colors text-xs">
+                                Subscribe
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="border-t border-secondary/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-light tracking-wide">
+                    <p class="mb-4 md:mb-0">
+                        &copy; 2026 LuxeTime. All rights reserved.
+                    </p>
+                    <div class="flex gap-6">
+                        <a href="#" class="hover:text-secondary transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-secondary transition-colors">Terms of Service</a>
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scroll Top Button -->
+    <button id="scroll-top" class="fixed bottom-8 right-8 w-12 h-12 bg-secondary text-black rounded-sm shadow-lg hidden hover:bg-white transition-all z-50 border border-secondary">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <script>
+        // --- 1. THEME & RTL LOGIC ---
+        const desktopThemeToggleBtn = document.getElementById('desktop-theme-toggle-btn');
+        const desktopThemeIcon = document.getElementById('desktop-theme-icon');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+        const htmlElement = document.documentElement;
+        const mobileRtlToggle = document.getElementById('mobile-rtl-toggle');
+        const desktopRtlToggleBtn = document.getElementById('desktop-rtl-toggle-btn');
+        
+        // Dark mode default
+        const currentTheme = localStorage.getItem('theme') || 'dark';
+        htmlElement.setAttribute('data-theme', currentTheme);
+        if (currentTheme === 'dark') {
+            htmlElement.classList.add('dark');
+            if (desktopThemeIcon) desktopThemeIcon.className = 'fas fa-sun';
+            if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-sun';
+        } else {
+            if (desktopThemeIcon) desktopThemeIcon.className = 'fas fa-moon';
+            if (mobileThemeIcon) mobileThemeIcon.className = 'fas fa-moon';
+        }
+
+        function toggleTheme() {
+            const isDark = htmlElement.getAttribute('data-theme') === 'dark';
+            const newTheme = isDark ? 'light' : 'dark';
+            
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            
+            if (newTheme === 'dark') {
+                htmlElement.classList.add('dark');
+            } else {
+                htmlElement.classList.remove('dark');
+            }
+            if (desktopThemeIcon) desktopThemeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+            if (mobileThemeIcon) mobileThemeIcon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+        }
+
+        if (desktopThemeToggleBtn) desktopThemeToggleBtn.addEventListener('click', toggleTheme);
+        if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', toggleTheme);
+        
+        // RTL
+        const currentDir = localStorage.getItem('direction') || 'ltr';
+        htmlElement.setAttribute('dir', currentDir);
+        function toggleRTL() {
+            const direction = htmlElement.getAttribute('dir') === 'rtl' ? 'ltr' : 'rtl';
+            htmlElement.setAttribute('dir', direction);
+            localStorage.setItem('direction', direction);
+        }
+        if (desktopRtlToggleBtn) desktopRtlToggleBtn.addEventListener('click', toggleRTL);
+        if (mobileRtlToggle) mobileRtlToggle.addEventListener('click', toggleRTL);
+
+        // --- 2. MOBILE MENU & DROPDOWN LOGIC ---
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const closeMobileMenu = document.getElementById('close-mobile-menu');
+
+        if(mobileMenuBtn) {
+            mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.add('active'));
+        }
+        if(closeMobileMenu) {
+            closeMobileMenu.addEventListener('click', () => mobileMenu.classList.remove('active'));
+        }
+        
+        function toggleDesktopDropdown(id) {
+            document.querySelectorAll('.dropdown').forEach(d => {
+                if(d.id !== id) d.classList.remove('active');
+            });
+            document.getElementById(id).classList.toggle('active');
+        }
+        function toggleMobileDropdown(id) {
+            document.getElementById(id).classList.toggle('active');
+        }
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.dropdown')) {
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('active'));
+            }
+        });
+
+        // --- 3. SCROLL TOP ---
+        const scrollTopBtn = document.getElementById('scroll-top');
+        window.addEventListener('scroll', () => {
+            scrollTopBtn.classList.toggle('hidden', window.scrollY <= 300);
+        });
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        
+        window.addEventListener('resize', () => {
+            if(window.innerWidth >= 1280) mobileMenu.classList.remove('active');
+        });
+
+        // --- 4. SMOOTH SCROLL ANCHORS ---
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    e.preventDefault();
+                    mobileMenu.classList.remove('active'); 
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80, 
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
