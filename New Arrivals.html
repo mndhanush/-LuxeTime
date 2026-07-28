@@ -111,7 +111,7 @@
         
         .nav-link {
             color: var(--text-heading); 
-            padding: 8px 8px;
+            padding: 8px 4px;
             transition: all 0.3s ease;
             position: relative;
             display: flex;
@@ -198,7 +198,8 @@
             .mobile-menu-button { display: none !important; }
         }
     </style>
-    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+    <link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=2">
+    <link rel="shortcut icon" href="assets/favicon.svg?v=2">
 </head>
 <body class="w-full overflow-x-hidden m-0 p-0 antialiased dark">
 
@@ -214,7 +215,7 @@
                         <div class="text-2xl font-serif font-bold text-heading-theme tracking-wider uppercase">Luxe<span class="text-secondary">Time</span></div>
                     </a>
                     
-                    <div class="desktop-nav items-center space-x-2 xl:space-x-4">
+                    <div class="desktop-nav items-center space-x-1 xl:space-x-2">
                         <div class="dropdown" id="home-dropdown">
                             <div class="nav-link" onclick="toggleDesktopDropdown('home-dropdown')">
                                 Home <i class="fas fa-chevron-down dropdown-arrow"></i>
@@ -234,7 +235,7 @@
                         <a href="contact.html" class="nav-link">Contact</a>
                     </div>
                     
-                    <div class="navbar-right-desktop flex items-center gap-3 shrink-0">
+                    <div class="navbar-right-desktop flex items-center gap-2 shrink-0">
                         <button class="w-9 h-9 rounded-full flex items-center justify-center text-heading-theme transition-all duration-300 hover:bg-secondary hover:text-white shrink-0 border border-theme cursor-pointer" id="desktop-theme-toggle-btn" title="Toggle Dark Mode">
                             <i class="fas fa-moon" id="desktop-theme-icon"></i>
                         </button>
@@ -245,7 +246,7 @@
                         <a href="login.html" class="text-heading-theme hover:text-secondary font-bold text-sm uppercase tracking-wide transition-all px-2 py-2 flex items-center shrink-0">
                             Login
                         </a>
-                        <a href="register.html" class="bg-secondary text-white px-6 py-2.5 rounded-sm font-bold text-sm uppercase tracking-wider transition-all hover:bg-black hover:text-secondary border border-secondary shadow-lg hover:shadow-xl flex items-center gap-2 shrink-0">
+                        <a href="register.html" class="bg-secondary text-white px-4 py-2.5 rounded-sm font-bold text-sm uppercase tracking-wider transition-all hover:bg-black hover:text-secondary border border-secondary shadow-lg hover:shadow-xl flex items-center gap-2 shrink-0">
                             Register
                         </a>
                     </div>
@@ -803,3 +804,5 @@
     </script>
 </body>
 </html>
+
+
