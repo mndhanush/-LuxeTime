@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html
   lang="en"
   data-theme="dark"
@@ -304,6 +304,7 @@
           display: none !important;
         }
       }
+    
     </style>
     <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   </head>
@@ -333,8 +334,7 @@
             <div class="desktop-nav items-center space-x-2 xl:space-x-4">
               <div class="dropdown" id="home-dropdown">
                 <div
-                  class="nav-link active"
-                  onclick="toggleDesktopDropdown('home-dropdown')"
+                  class="nav-link active" onclick="toggleDesktopDropdown('home-dropdown')"
                 >
                   Home <i class="fas fa-chevron-down dropdown-arrow"></i>
                 </div>
@@ -343,7 +343,7 @@
                   <a
                     href="home2.html"
                     class="dropdown-item"
-                    style="color: #d4af37; font-weight: 700"
+                    
                     >Home 2</a
                   >
                 </div>
@@ -519,7 +519,7 @@
       <main class="w-full flex-grow pt-[72px] lg:pt-[80px]">
         <!-- 1️⃣ Split Screen Hero Section -->
         <section
-          class="min-h-[85vh] flex flex-col lg:flex-row border-b border-theme"
+          class="h-[calc(100vh-72px)] lg:h-[calc(100vh-80px)] flex flex-col lg:flex-row border-b border-theme"
         >
           <div
             class="w-full lg:w-1/2 flex items-center justify-center p-8 lg:p-16 bg-theme-main relative z-10"
@@ -563,12 +563,12 @@
             </div>
           </div>
           <div
-            class="w-full lg:w-1/2 h-[50vh] lg:h-auto relative overflow-hidden"
+            class="w-full lg:w-1/2 h-1/2 lg:h-full relative overflow-hidden bg-accent"
           >
             <img
               src="assets/images/premium/watch_hero_2.png"
               alt="Luxury Timepiece"
-              class="absolute inset-0 w-full h-full object-cover animate-slow-pan"
+              class="absolute inset-0 w-full h-full object-cover object-center animate-slow-pan"
             />
             <div
               class="absolute inset-0 bg-gradient-to-r from-bg-theme to-transparent lg:hidden"
@@ -1160,10 +1160,9 @@
           </div>
 
           <div
-            class="border-t border-secondary/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 font-light tracking-wide"
+            class="border-t border-secondary/20 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-200 font-light tracking-wide"
           >
-            <p class="mb-4 md:mb-0">
-              &copy; 2026 LuxeTime. All rights reserved.
+            <p class="mb-4 md:mb-0 text-gray-200"> &copy; 2026 LuxeTime. All rights reserved.
             </p>
             <div class="flex gap-6">
               <a href="#" class="hover:text-secondary transition-colors"
@@ -1316,3 +1315,12 @@
     </script>
   </body>
 </html>
+
+
+
+
+
+
+
+
+
